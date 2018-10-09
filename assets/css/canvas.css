@@ -1,0 +1,12 @@
+canvas {
+    background: #eee;
+    display: block; 
+    margin: 0 auto; 
+}
+#title {
+    text-align: center;
+}
+
+body {
+    background-image: url(".assets/css/memphis-colorful.png");
+}
