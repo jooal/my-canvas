@@ -34,6 +34,13 @@ var leftArrow = false;
 var score =0;
 var lives = 3;
 
+// function gameWon() {
+//     console.log("game won");
+//     if (score === 15) {
+//         alert("You won!");
+//         document.location.reload();
+//     }
+// };
 
 //-------------------------------------------//
 
@@ -81,10 +88,14 @@ function collide() {
                 b.status=0
                 score++;
                 document.getElementById("scoreKeeper").innerHTML="Score: " + score;
+                if(score == brickRowCount*brickColumnCount) {
+                    alert("YOU WIN, CONGRATS!");
+                    document.location.reload();
                 }
             }
         }
     }
+}
 }
 
 function drawBall() {
@@ -105,6 +116,7 @@ function drawPaddle() {
 }
 
 function drawBricks() {
+    //console.log("bricks drawn");
     for(var i=0; i<brickColumnCount; i++) {
         for(var a=0; a<brickRowCount; a++) {
             if (bricks[i][a].status==1){
@@ -131,7 +143,7 @@ function draw() {
     collide();
     drawBall();
     drawPaddle();
-    gameWon();
+    //gameWon();
     //adding the movement 
 
     if(rightArrow && paddleX < getCanvas.width-paddleWidth) {
@@ -194,18 +206,5 @@ function draw() {
         dx = -dx;
     }
 };
-setInterval(draw, 15); //every 20 milliseconds 
-
-function gameWon() {
-    if (score== 15) {
-        alert("You won!");
-        document.location.reload();
-    }
-};
-
-
-
-
-
-
+setInterval(draw, 15); //every 20 milliseconds
 
